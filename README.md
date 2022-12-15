@@ -1,4 +1,5 @@
-# vue3-yanxuan
+# Project Name: iFashion 
+## --- Vue3 based front-end together with Amazon AWS based-end (API gateway, lambda, DynamoDB, OpenSearch, etc.)
 
 ## Project setup
 ```
