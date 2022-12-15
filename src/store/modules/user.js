@@ -3,8 +3,8 @@ export default {
     state: () => {
         return {
             userinfo: {
-                token: '123',
-                username: '张三'
+                // token: '123',
+                // username: '张三'
             }
         }
     },

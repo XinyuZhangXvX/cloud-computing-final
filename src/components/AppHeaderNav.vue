@@ -3,7 +3,7 @@
 <template>
   <ul class="app-header-nav">
     <li class="item">
-      <RouterLink class="link" to="/">首页</RouterLink>
+      <RouterLink class="link" to="/">Home</RouterLink>
     </li>
     <li
       class="item"
@@ -17,10 +17,12 @@
       <div class="layer" :class="{active:item.open}">
         <ul>
           <li v-for="ele in item.subCateGroupList" :key="ele.id">
-            <a href="#">
+            <a :href="'/category/'+item.id+'/subcat/'+ele.id"><div>{{ele.name}}</div></a>
+            <!-- <RouterLink class="link" :to="'category/'+item.name+'subcat/'+ele.name" @click="hide(item)">{{ele.name}}</RouterLink> -->
+            <!-- <a href="#">
               <img :src="ele.categoryList[0].bannerUrl" alt />
-            </a>
-            <div>{{ele.name}}</div>
+            </a> -->
+            
           </li>
         </ul>
       </div>
@@ -80,7 +82,7 @@ export default {
       }
       .layer {
         opacity: 0;
-        height: 120px;
+        height: 35px;
       }
       .active {
         opacity: 1;

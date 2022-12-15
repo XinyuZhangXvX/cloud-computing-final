@@ -6,9 +6,12 @@ import Layout from '@/views/Layout.vue'
 import Home  from '@/views/Home/Home.vue'
 const Login = () => import('@/views/Login.vue')
 const Category = () => import('@/views/Category/Category.vue')
+const Subcategory = () => import('@/views/Category/Subcategory.vue')
+const Search = () => import('@/views/Search.vue')
 
 
-const routes = [{
+const routes = [
+  {
     path: '/',
     name: 'Layout',
     component: Layout,
@@ -18,7 +21,17 @@ const routes = [{
         component:Home
       },{
         path:'/category/:id',
-        component:Category
+        component:Category,
+        children:[
+          {
+            path:'/category/:id/subcat/:subid',
+            component:Subcategory
+          }
+        ],
+      },
+      {
+        path:'/search/:keyword',
+        component:Search
       }
     ]
   }, {

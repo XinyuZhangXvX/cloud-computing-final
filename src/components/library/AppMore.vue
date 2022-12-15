@@ -2,7 +2,7 @@
 
 <template>
   <router-link :to="path" class="more">
-      <span>查看全部</span>
+      <span>View all</span>
       <i class="iconfont icon-angle-right"></i>
   </router-link>
 </template>

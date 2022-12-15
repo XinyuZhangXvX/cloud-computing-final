@@ -5,7 +5,7 @@
     <!-- 1、面包屑 -->
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item to="/">首页</el-breadcrumb-item>
+        <el-breadcrumb-item to="/">Main</el-breadcrumb-item>
         <el-breadcrumb-item>{{category.name}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -16,9 +16,9 @@
     <div class="sub-list">
       <h3>全部分类</h3>
       <ul>
-        <li v-for="item in category.subCateGroupList" :key="item.id">
+        <li v-for="item in category.subCateList" :key="item.id">
           <a href="##">
-            <!-- <img :src="item.bannerUrl" alt /> -->
+            <img :src="item.bannerUrl" alt />
             <div class="name">{{item.name}}</div>
           </a>
         </li>
@@ -36,15 +36,15 @@ export default {
   setup(props) {
     // 轮播图
     const banner = ref([]);
-    // getBanner()
-    //   .then(res => {
-    //     if (res.msg == "操作成功") {
-    //       banner.value = res.result;
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    getBanner()
+      .then(res => {
+        if (res.msg == "操作成功") {
+          banner.value = res.result;
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     // 获取仓库对象
     const store = useStore();
@@ -59,7 +59,7 @@ export default {
       if (item) cate = item;
       return cate;
     });
-    console.log(category.value);
+
     return { banner, category };
   }
 };

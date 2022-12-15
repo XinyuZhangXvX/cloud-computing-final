@@ -27,7 +27,7 @@ module.exports = defineConfig({
         }
       },
       '/foo': {
-        target: 'http://localhost:7788', //本地接口
+        target: 'https://dbgqcxez61.execute-api.us-east-1.amazonaws.com/ifashion-api', //本地接口
         ws: true,
         changeOrigin: true,
         pathRewrite: { //重写路径

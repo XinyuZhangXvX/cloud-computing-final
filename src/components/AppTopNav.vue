@@ -4,26 +4,23 @@
       <ul>
         <template v-if="userinfo.token">
           <li>
-            <a href="javascript:;">张三</a>
+            <a href="javascript:;">Hi {{userinfo.username}}</a>
           </li>
           <li>
-            <a href="javascript:;">退出登录</a>
+            <a href="javascript:;">Logout</a>
           </li>
         </template>
         <li v-else>
-          <a href="javascript:;">登录/注册</a>
+          <a href="javascript:;">Login</a>
         </li>
         <li>
-          <a href="javascript:;">我的订单</a>
+          <a href="javascript:;">My Favorite</a>
         </li>
         <li>
-          <a href="javascript:;">会员</a>
+          <a href="javascript:;">Contact</a>
         </li>
         <li>
-          <a href="javascript:;">甄选家</a>
-        </li>
-        <li>
-          <a href="javascript:;">客户服务</a>
+          <a href="javascript:;">Help</a>
         </li>
         <li>
           <a href="javascript:;">
@@ -54,7 +51,7 @@ export default {
 <style lang="less" scoped>
 // @import url('../assets/styles/variables.less');
 .app-top-nav {
-  background-color: #333;
+  background-color: #35185A;
   ul {
     display: flex;
     height: 40px;

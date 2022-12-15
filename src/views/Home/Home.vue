@@ -1,12 +1,17 @@
 <template>
   <div class="home w">
     <!-- 轮播图 -->
-    <HomeBanner/>
+    <!-- <HomeBanner/> -->
 
-    <!-- 新鲜好物 -->
-    <HomeNew />
-    <!-- 人气推荐 -->
-    <HomeHot />
+    <!-- Recommend -->
+    <HomeRcmd />
+    <!-- Women -->
+    <HomeWomen />
+    <!-- Men -->
+    <HomeMen />
+    <!-- Kids -->
+    <HomeKids />
+
     <!-- 产品区块 -->
     <HomeProduct />
     
@@ -15,14 +20,18 @@
 
 <script>
 import HomeBanner from './HomeBanner.vue'
-import HomeNew from './HomeNew.vue'
-import HomeHot from './HomeHot.vue'
+import HomeRcmd from './HomeRcmd.vue'
+import HomeWomen from './HomeWomen.vue'
+import HomeMen from './HomeMen.vue'
+import HomeKids from './HomeKids.vue'
 import HomeProduct from './HomeProduct.vue'
 export default {
     components:{
         HomeBanner,
-        HomeNew,
-        HomeHot,
+        HomeRcmd,
+        HomeWomen,
+        HomeMen,
+        HomeKids,
         HomeProduct
     }
 };

@@ -2,7 +2,7 @@
     "msg": "操作成功",
     "result": [{
         "id": "1005000",
-        "name": "居家",
+        "name": "Woman",
         "picture": "https://yanxuan-item.nosdn.127.net/0d7d091a10faf1c22027046f517511cf.png?quality=95&thumbnail=610x610&imageView",
         "saleInfo": "全场3件8折",
         "children": [{
@@ -93,7 +93,7 @@
         }]
     }, {
         "id": "1005002",
-        "name": "美食",
+        "name": "Men",
         "picture": "https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/home_goods_cover.jpg",
         "saleInfo": "3折起狂欢",
         "children": [{
@@ -184,7 +184,7 @@
         }]
     }, {
         "id": "1010000",
-        "name": "服饰",
+        "name": "kids",
         "picture": "https://yanxuan-item.nosdn.127.net/01227c93e9098342be591ea57b8953c7.jpg?quality=95&thumbnail=610x610&imageView",
         "saleInfo": "全场3件8折",
         "children": [{
@@ -273,96 +273,6 @@
             "discount": null,
             "orderNum": 58
         }]
-    }, {
-        "id": "1011000",
-        "name": "母婴",
-        "picture": "https://yanxuan-item.nosdn.127.net/0d7d091a10faf1c22027046f517511cf.png?quality=95&thumbnail=610x610&imageView",
-        "saleInfo": "全场3件8折",
-        "children": [{
-            "id": "1020003",
-            "name": "T恤/polo/衬衫",
-            "layer": 2,
-            "parent": null
-        }, {
-            "id": "1091003",
-            "name": "卫衣/毛衫",
-            "layer": 2,
-            "parent": null
-        }, {
-            "id": "109243018",
-            "name": "外套/套装",
-            "layer": 2,
-            "parent": null
-        }, {
-            "id": "109243021",
-            "name": "连体衣/礼盒",
-            "layer": 2,
-            "parent": null
-        }],
-        "goods": [{
-            "id": "3994463",
-            "name": "单穿内搭皆出彩，竹节棉撞色T恤110-160cm",
-            "desc": "甄选纯棉，竹节肌理感",
-            "price": "89.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/aa85e036998d552ba9d708dc3e2ea411.png",
-            "discount": null,
-            "orderNum": 81
-        }, {
-            "id": "3994993",
-            "name": "基础百搭，儿童套头针织毛衣1-9岁",
-            "desc": "宽松版型，搭出休闲风格",
-            "price": "119.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/56eb25a38d7a630e76a608a9360eec6b.jpg",
-            "discount": null,
-            "orderNum": 247
-        }, {
-            "id": "3994470",
-            "name": "复古格调，儿童灯芯绒衬衫73-130cm",
-            "desc": "竖条灯芯绒纹理，凸显肌理层次",
-            "price": "99.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/09ae7983369f9ddfba6ea96670ca84a7.png",
-            "discount": null,
-            "orderNum": 73
-        }, {
-            "id": "4001232",
-            "name": "2021年春季新品，儿童纯棉长袖T恤73-130cm",
-            "desc": "多色可选，童趣别致",
-            "price": "59.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/33ce94abe337dfd442ce8640401af5fe.jpg",
-            "discount": null,
-            "orderNum": 152
-        }, {
-            "id": "3994481",
-            "name": "温柔甜美，女童基础针织开衫3-12岁",
-            "desc": "微收版型，舒适不紧勒",
-            "price": "89.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/4b515f173e3e2a9b8ba5a6b41e6d2566.png",
-            "discount": null,
-            "orderNum": 95
-        }, {
-            "id": "4000277",
-            "name": "21春季新品，宝宝舒适四季连体衣0-3岁",
-            "desc": "拥抱新生，A类婴幼儿标准，安全放心",
-            "price": "69.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/6efe85e63ab1e09896e1c99a9fe09d9e.png",
-            "discount": null,
-            "orderNum": 164
-        }, {
-            "id": "3994464",
-            "name": "秋冬打底常备，儿童印花长袖T恤73-130cm",
-            "desc": "童趣印花，创意十足",
-            "price": "79.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/d425828ef7df33015f8bfc7e3299f5ec.jpg",
-            "discount": null,
-            "orderNum": 139
-        }, {
-            "id": "3993304",
-            "name": "百搭利器，儿童基础素色毛衣3-16岁",
-            "desc": "经典四色，软糯保暖",
-            "price": "99.00",
-            "picture": "https://yanxuan-item.nosdn.127.net/f72db43879ef2c1d3d99cbb0c5e5c6e9.png",
-            "discount": null,
-            "orderNum": 94
-        }]
-    }]
+    }
+]
 }
