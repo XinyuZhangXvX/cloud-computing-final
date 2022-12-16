@@ -141,3 +141,49 @@ export const defaultWomen = [{
     isLiked: false
 }
 ]
+
+export const testMap = new Map([
+    ["key1", "value1"],
+    ["key2", "value2"]
+]);
+
+// export const categoryMatch = new Map([
+//     ["1", new Map(['name', 'Women'],
+//         ['subCateGroupList', new Map(
+//                             [1, 'Accessories'],
+//                             [2, 'Blouses'],
+//                             [3, 'Dresses/Skirts'],
+//                             [4, 'Jerseys'],
+//                             [5, 'Knitwear'],
+//                             [6, 'Shorts'],
+//                             [7, 'Shoes'],
+//                             [8, 'Trousers'],
+//                             [9, 'Socks']
+//         )]
+//     )],
+//     ["2", new Map(['name', 'Men'],
+//         ['subCateGroupList', new Map(
+//                             [1, 'Accessories'],
+//                             [2, 'Jerseys'],
+//                             [3, 'Knitwear'],
+//                             [4, 'Shirts'],
+//                             [5, 'Shorts'],
+//                             [6, 'Shoes'],
+//                             [7, 'Trousers'],
+//                             [8, 'Socks']
+//         )]
+//     )],
+//     ["3", new Map(['name', 'Kids'],
+//         ['subCateGroupList', new Map(
+//                             [1, 'Accessories'],
+//                             [2, 'Dresses/Skirts'],
+//                             [3, 'Jerseys'],
+//                             [4, 'Knitwear'],
+//                             [5, 'Shirts'],
+//                             [6, 'Shorts'],
+//                             [7, 'Shoes'],
+//                             [8, 'Trousers'],
+//                             [8, 'Socks']
+//         )]
+//     )]
+// ])

@@ -3,7 +3,7 @@
     <!-- 上面区域 -->
     <div class="header-top">
       <!-- logo -->
-      <a class="logo" href="/"><img src='../assets/images/ifashion-logo.png' width="50%"></a>
+      <a class="logo" href="/"><img src='../assets/images/ifashion-logo.png' width="380"></a>
       
       <!-- <h1>
         <p>ifashion</p>
@@ -13,8 +13,9 @@
       <!-- 搜索-->
       <div class="center">
         <div class="center-search">
-          <input type="text" name id placeholder="women sweater" />
-          <button class="search-btn">Search</button>
+          <input type="text" name id placeholder="women tops" v-model="keyword"/>
+          
+          <RouterLink class="link" :to="'/search/'+keyword"><button class="search-btn" @click="search">Search</button></RouterLink>
         </div>
         
       </div>
@@ -29,9 +30,9 @@
     <!-- 二级导航 -->
     <AppHeaderNav />
     <!-- Test -->
-    <div>
+    <!-- <div>
       <RouterLink class="link" :to="'/search/test'" @click="hide(item)">Test Search</RouterLink>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -39,8 +40,18 @@
 import AppHeaderNav from "./AppHeaderNav.vue";
 import { useStore } from "vuex";
 export default {
+  data(){
+    return {
+      keyword: ""
+    }
+  },
   components: {
     AppHeaderNav
+  },
+  methods:{
+  	search(){
+      console.log(this.keyword)
+    }
   },
   setup(props) {
     const store = useStore();

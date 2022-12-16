@@ -5,15 +5,16 @@
     <!-- 1、面包屑 -->
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item to="/">Main</el-breadcrumb-item>
+        <el-breadcrumb-item to="/">Home</el-breadcrumb-item>
         <el-breadcrumb-item>{{category.name}}</el-breadcrumb-item>
+        <el-breadcrumb-item>{{subcategory.name}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <!-- 2、轮播图 -->
     <!-- <AppBanner :list="banner" /> -->
 
     <!-- 3、分类展示 -->
-    <div class="sub-list">
+    <!-- <div class="sub-list">
       <h3>全部分类</h3>
       <ul>
         <li v-for="item in category.subCateList" :key="item.id">
@@ -23,16 +24,66 @@
           </a>
         </li>
       </ul>
+    </div> -->
+
+    <div >
+      <MyPanel title="Results" subTitle="There are the results">
+        <ul class="goods-list">
+          <li class="item" v-for="item in goods" :key="item.id">
+            <router-link to="/">
+              <img :src="item.listPicUrl" />
+              <div class="title ellipsis-2">{{item.name}}</div>
+              <a style="float: right;">
+                <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
+                <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
+              </a>
+            </router-link>
+          </li>
+        </ul>
+      </MyPanel>
     </div>
   </div>
 </template>
 
 <script>
+import MyPanel from "@/components/MyPanel.vue";
+import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
+import { categoryMatch } from '@/utils/constants';
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { getBanner } from "@/api";
 export default {
+  data(){
+    return{
+      map: [false, false, false, false,false, false, false, false,],
+    }
+  },
+  components: {
+    MyPanel,
+    HomeVueSkeleton
+  },
+  methods:{
+      toggleLike(e){
+      // const cur = this
+      if(e.isLiked === false){
+          // TODO -> send axios request to like a item
+          console.log(this)
+
+          e.isLiked = true
+          this.map[e.id] = true
+          // this.goods[e.id-1].isLiked = true
+          console.log("like item")
+          console.log(this)
+      }else{
+          // TODO -> send axios request to unlike a item
+          e.isLiked = false
+          this.map[e.id] = false
+          // this.goods[e.id-1].isLiked = false
+          console.log("unlike item")
+      }
+      }
+  },
   setup(props) {
     // 轮播图
     const banner = ref([]);
@@ -60,7 +111,26 @@ export default {
       return cate;
     });
 
-    return { banner, category };
+    console.log(category)
+    
+    const subcategory = computed(() => {
+      let cate = {};
+      let subcat = {};
+      const item = store.state.category.cateList.find(item => {
+        return item.id == route.params.id;
+      });
+      if (item) {
+        cate = item;
+        const sub = cate.subCateGroupList.find(item =>{
+          return item.id == route.params.subid;
+        });
+        if(sub) subcat = sub;
+        return sub;
+      }
+      return sub;
+    });
+
+    return { banner, category, subcategory };
   }
 };
 </script>

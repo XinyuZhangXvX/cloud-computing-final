@@ -17,7 +17,8 @@
       <div class="layer" :class="{active:item.open}">
         <ul>
           <li v-for="ele in item.subCateGroupList" :key="ele.id">
-            <a :href="'/category/'+item.id+'/subcat/'+ele.id"><div>{{ele.name}}</div></a>
+            <!-- <a :href="'/category/'+item.id+'/subcat/'+ele.id"><div>{{ele.name}}</div></a> -->
+            <RouterLink class="link" :to="'/category/'+item.id+'/subcat/'+ele.id" @click="hide(item)">{{ele.name}}</RouterLink>
             <!-- <RouterLink class="link" :to="'category/'+item.name+'subcat/'+ele.name" @click="hide(item)">{{ele.name}}</RouterLink> -->
             <!-- <a href="#">
               <img :src="ele.categoryList[0].bannerUrl" alt />

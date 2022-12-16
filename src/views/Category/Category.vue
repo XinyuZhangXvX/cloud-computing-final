@@ -5,7 +5,7 @@
     <!-- 1、面包屑 -->
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item to="/">首页</el-breadcrumb-item>
+        <el-breadcrumb-item to="/">Home</el-breadcrumb-item>
         <el-breadcrumb-item>{{category.name}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -14,7 +14,7 @@
 
     <!-- 3、分类展示 -->
     <div class="sub-list">
-      <h3>全部分类</h3>
+      <h3>All Categories</h3>
       <ul>
         <li v-for="item in category.subCateGroupList" :key="item.id">
           <a href="##">
@@ -85,7 +85,7 @@ export default {
       justify-content: space-between;
       li {
         width: 140px;
-        height: 160px;
+        height: 40px;
         text-align: center;
         img {
           width: 100px;

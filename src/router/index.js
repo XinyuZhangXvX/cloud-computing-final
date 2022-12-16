@@ -19,19 +19,20 @@ const routes = [
       {
         path:'/',
         component:Home
-      },{
-        path:'/category/:id',
-        component:Category,
-        children:[
-          {
-            path:'/category/:id/subcat/:subid',
-            component:Subcategory
-          }
-        ],
       },
       {
         path:'/search/:keyword',
         component:Search
+      },
+      {
+        path:'/category/:id/subcat/:subid',
+        component:Subcategory
+      },
+      {
+        path:'/category/:id',
+        component:Category,
+        children:[
+        ]
       }
     ]
   }, {
