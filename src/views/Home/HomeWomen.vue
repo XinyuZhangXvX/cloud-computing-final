@@ -66,7 +66,7 @@ export default {
         const res = await getHot();
         console.log(res);
         // if (res.msg == "操作成功") {
-        goods.value=res.result;//.slice(0,8);
+        goods.value=res.slice(0,8);
         // }
       } catch (error) {
         console.log(error);

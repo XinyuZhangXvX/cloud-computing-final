@@ -1,12 +1,10 @@
 import { createStore } from 'vuex'
-import modules from './modules'
 import authModule from "./auth/index";
 import settingsModule from "./settings/index";
 import contactsModule from "./contacts/index";
 
 
 export default createStore({
-  
   state() {
     return {
       isLoading: false,
@@ -23,7 +21,6 @@ export default createStore({
     },
   },
   modules: {
-    modules,
     authModule,
     settingsModule,
     contactsModule,

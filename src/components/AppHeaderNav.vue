@@ -34,12 +34,15 @@
 <script>
 import { useStore } from "vuex";
 import { computed } from "vue";
+import {topCategory} from '@/utils/constants'
+
 export default {
   setup(props) {
     const store = useStore();
     // 从仓库里读取分类列表
     const list = computed(() => {
-      return store.state.category.cateList;
+      // return store.state.category.cateList;
+      return topCategory;
     });
     // 鼠标进入显示
     const show = item => {

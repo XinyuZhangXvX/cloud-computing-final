@@ -39,8 +39,13 @@ import { computed } from "vue";
 export default {
   setup(props) {
     const store = useStore();
+    // console.log(store.state);
     let userinfo = computed(() => {
-      return store.state.user.userinfo;
+      // return store.state.user.userinfo;
+      return {
+        token: 111,
+        username: "abc"
+      }
     });
 
     return { userinfo };
