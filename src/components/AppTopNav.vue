@@ -15,7 +15,9 @@
           <RouterLink class="link" :to="'/signin'">Login</RouterLink>
         </li>
         <li>
-          <a href="javascript:;">My Favorite</a>
+          <RouterLink class="link" :to="'/favorite'">
+            My Favorite
+          </RouterLink>
         </li>
         <li>
           <a href="javascript:;">Contact</a>

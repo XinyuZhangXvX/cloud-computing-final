@@ -85,8 +85,8 @@ export default {
         border-bottom: 2px solid @xtxColor;
       }
       .layer {
-        opacity: 0;
-        height: 35px;
+        opacity: 1;
+        height: 40px;
       }
       .active {
         opacity: 1;
@@ -104,7 +104,7 @@ export default {
     background-color: #fff;
     box-shadow: 0 0 5px #ccc;
     overflow: hidden;
-    transition: all 0.5s;
+    transition: all 1s;
 
     ul {
       display: flex;

@@ -13,17 +13,20 @@
       <!-- 搜索-->
       <div class="center">
         <div class="center-search">
-          <input type="text" name id placeholder="women tops" v-model="keyword"/>
+          <input type="text" name id placeholder="women shorts" v-model="keyword"/>
           
           <RouterLink class="link" :to="'/search/'+keyword"><button class="search-btn" @click="search">Search</button></RouterLink>
         </div>
         
       </div>
-      <!-- 购物车 -->
+      <!-- 问卷 -->
       <div class="cart">
-        <a href="##">
+        <!-- <a href="##">
           Qustionnaire
-        </a>
+        </a> -->
+        <RouterLink class="link" :to="'/questionnaire'">
+          Qustionnaire
+        </RouterLink>
       </div>
     </div>
 
@@ -55,8 +58,7 @@ export default {
   },
   setup(props) {
     const store = useStore();
-    // 触发action
-    // store.dispatch('category/getAllCategory');
+
   }
 };
 </script>

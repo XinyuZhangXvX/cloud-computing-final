@@ -2,20 +2,20 @@
   <div class="search-result w">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item to="/">Main</el-breadcrumb-item>
-        <el-breadcrumb-item>Search Result</el-breadcrumb-item>
+        <el-breadcrumb-item to="/">Home</el-breadcrumb-item>
+        <el-breadcrumb-item>My Favorite</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
 
     <div >
-      <MyPanel title="Results" subTitle="There are the results">
+      <MyPanel title="Favorites" subTitle="There are your favorite items">
         <ul class="goods-list">
           <li class="item" v-for="item in goods" :key="item.id">
             <router-link to="/">
               <img :src="item.listPicUrl" />
               <div class="title ellipsis-2">{{item.name}}</div>
               <a style="float: right;">
-                <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
+                <i class="fa-solid fa-heart favorite-right" v-if="map[item.id-1]" @click="toggleLike(item)"></i>
                 <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
               </a>
             </router-link>
@@ -37,7 +37,7 @@ import { ref } from "vue";
 export default {
   data(){
     return{
-      map: [false, false, false, false,false, false, false, false,]
+      map: [true, true, true, true,true, true, true, true]
       }
   },
   components: {
@@ -82,6 +82,7 @@ export default {
 
 <style lang="less" scoped>
 .search-result{
+  clear:left;
   padding: 10px 30px;
   .breadcrumb{
     padding: 10px 0;

@@ -14,7 +14,7 @@
 
     <!-- 3、分类展示 -->
     <div class="sub-list">
-      <h3>All Categories</h3>
+      <h4>All Categories</h4>
       <ul>
         <li v-for="item in category.subCateGroupList" :key="item.id">
           <!-- <a href="##">

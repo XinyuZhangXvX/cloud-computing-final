@@ -56,7 +56,7 @@ import {topCategory} from '@/utils/constants'
 export default {
   data(){
     return{
-      map: [false, false, false, false,false, false, false, false,],
+      map: [false, false, false, false,false, false, false, false],
     }
   },
   components: {

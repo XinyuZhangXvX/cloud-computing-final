@@ -2,7 +2,7 @@
   <div class="search-result w">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item to="/">Main</el-breadcrumb-item>
+        <el-breadcrumb-item to="/">Home</el-breadcrumb-item>
         <el-breadcrumb-item>Search Result</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -31,6 +31,8 @@
 import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { defaultRecommend } from '@/utils/constants';
+import { useRoute } from "vue-router";
+import { getSearchResults } from "@/api";
 import { ref } from "vue";
 // import { getSearch } from "@/api";
 
@@ -62,7 +64,7 @@ export default {
           this.map[e.id] = false
           // this.goods[e.id-1].isLiked = false
           console.log("unlike item")
-      }
+        }
       }
   },
   setup(props) {
@@ -74,7 +76,26 @@ export default {
     const hide = item => {
       item.open = false;
     };
-    const goods = defaultRecommend;
+    const route = useRoute();
+
+    const goods = ref([]);
+    const getResultList = async (keyword) => {
+      try {
+        const res = await getSearchResults(keyword);
+        console.log(res);
+        // if(status == 200)
+        goods.value=res.slice(0,20);
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getResultList(route.params.keyword);
+    // console.log(typeof(goods)) // object
+    // if(goods.length > 8) goods = goods.slice(0,8)
+    console.log(goods)
+    // const goods = defaultRecommend;
+    return { goods };
     return { show, hide, goods };
   }
 };
@@ -82,6 +103,7 @@ export default {
 
 <style lang="less" scoped>
 .search-result{
+  clear:left;
   padding: 10px 30px;
   .breadcrumb{
     padding: 10px 0;

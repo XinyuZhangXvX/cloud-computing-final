@@ -142,6 +142,108 @@ export const defaultWomen = [{
 }
 ]
 
+export const patternSamples = [{
+    id: 1,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/011/0112679052.jpg',
+    name: 'All over pattern',
+}, 
+{
+    id: 2,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/068/0685424001.jpg',
+    name: 'Argyle',
+}, 
+{
+    id: 3,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/020/0203595036.jpg',
+    name: 'Check',
+}, 
+{
+    id: 4,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/037/0375849019.jpg',
+    name: 'Colour blocking',
+}, 
+{
+    id: 5,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/052/0526302001.jpg',
+    name: 'Contrast',
+}, 
+{
+    id: 6,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/047/0476583020.jpg',
+    name: 'Dot',
+}, 
+{
+    id: 7,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/048/0481145001.jpg',
+    name: 'Front print',
+}, 
+
+{
+    id: 8,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/034/0342954024.jpg',
+    name: 'Placement print',
+},
+{
+    id: 9,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/051/0513743013.jpg',
+    name: 'Sequin',
+},
+{
+    id:10,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/017/0176209025.jpg',
+    name: 'Solid',
+},
+{
+    id: 11,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/026/0269342021.jpg',
+    name: 'Strip',
+},
+]
+
+export const textureSamples = [{
+    id: 1,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/050/0501619018.jpg',
+    name: 'Chambray',
+}, 
+{
+    id: 2,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/039/0399061028.jpg',
+    name: 'Denim',
+}, 
+{
+    id: 3,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/050/0506621001.jpg',
+    name: 'Jacquard',
+}, 
+{
+    id: 4,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/052/0522090001.jpg',
+    name: 'Lace',
+}, 
+{
+    id: 5,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/014/0145872051.jpg',
+    name: 'Melange',
+}, 
+{
+    id: 6,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/048/0481754002.jpg',
+    name: 'Neps',
+}, 
+{
+    id: 7,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/048/0487750018.jpg',
+    name: 'Slub',
+}, 
+
+{
+    id: 8,
+    listPicUrl: 'https://cloud-final-images.s3.amazonaws.com/images/070/0700974002.jpg',
+    name: 'Mesh',
+},
+
+]
+
 export const testMap = new Map([
     ["key1", "value1"],
     ["key2", "value2"]

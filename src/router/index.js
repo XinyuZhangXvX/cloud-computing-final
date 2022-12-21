@@ -7,6 +7,8 @@ import Home  from '@/views/Home/Home.vue'
 const Category = () => import('@/views/Category/Category.vue')
 const Subcategory = () => import('@/views/Category/Subcategory.vue')
 const Search = () => import('@/views/Search.vue')
+const Favorite = () => import('@/views/Favorite.vue')
+const Questionnaire = () => import('@/views/Questionnaire.vue')
 
 import SignUp from "@/views/auth/SignUp";
 import SignIn from "@/views/auth/SignIn";
@@ -39,6 +41,14 @@ const routes = [
       {
         path:'/search/:keyword',
         component:Search
+      },
+      {
+        path: '/favorite',
+        component: Favorite
+      },
+      {
+        path: '/questionnaire',
+        component: Questionnaire
       },
       {
         path:'/category/:id/subcat/:subid',

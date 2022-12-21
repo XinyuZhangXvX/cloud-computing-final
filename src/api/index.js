@@ -14,3 +14,9 @@ import req from './req'
     console.log('/foo/'+ catId +'/' + subCateId)
     return req.get('/foo/'+ catId +'/' + subCateId);
  }
+
+// search items
+export const getSearchResults=(keyword)=>{
+   console.log('/foo/search?q='+ keyword)
+   return req.get('/foo/search?q='+ keyword);
+}
