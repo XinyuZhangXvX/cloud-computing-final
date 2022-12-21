@@ -48,11 +48,10 @@
 <script>
 import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
-import { categoryMatch } from '@/utils/constants';
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import { getBanner } from "@/api";
+import { getSubCate } from "@/api";
 import {topCategory} from '@/utils/constants'
 export default {
   data(){
@@ -86,17 +85,6 @@ export default {
       }
   },
   setup(props) {
-    // 轮播图
-    const banner = ref([]);
-    getBanner()
-      .then(res => {
-        if (res.msg == "操作成功") {
-          banner.value = res.result;
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
 
     // 获取仓库对象
     const store = useStore();
@@ -131,7 +119,24 @@ export default {
       return sub;
     });
 
-    return { banner, category, subcategory };
+    const goods = ref([]);
+    const getSubCateList = async (catId, subCatId) => {
+      try {
+        const res = await getSubCate(catId, subCatId);
+        console.log(res);
+        // if(status == 200)
+        goods.value=res;
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSubCateList(category.value.id, subcategory.value.id);
+    console.log('goods is')
+    console.log(goods)
+    // const goods = defaultRecommend;
+
+    return { category, subcategory, goods};
   }
 };
 </script>
@@ -169,6 +174,39 @@ export default {
             color: @xtxColor;
           }
         }
+      }
+    }
+  }
+}
+.goods-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  .item {
+    // display: list-item;
+    // float:left; 
+    // display: block;
+    // white-space: nowrap;
+    width: 265px;
+    height: 365px;
+    background-color: #f5f5f5;
+    img {
+      width: 265px;
+      height: 265px;
+    }
+    // .hoverShadow();
+    .title {
+      font-size: 17px;
+      text-align: center;
+      padding: 15px 25px;
+    }
+    .price {
+      text-align: center;
+      font-size: 15px;
+      color: @priceColor;
+      del {
+        color: #666;
       }
     }
   }

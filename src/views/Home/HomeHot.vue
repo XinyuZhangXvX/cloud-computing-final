@@ -17,7 +17,7 @@
 <script>
 import MyPanel from "@/components/MyPanel.vue";
 import { ref } from "vue";
-import { getHot } from "@/api";
+// import { getHot } from "@/api";
 export default {
   components: {
     MyPanel

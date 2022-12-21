@@ -56,7 +56,7 @@ export default {
   setup(props) {
     const store = useStore();
     // 触发action
-    store.dispatch('category/getAllCategory');
+    // store.dispatch('category/getAllCategory');
   }
 };
 </script>

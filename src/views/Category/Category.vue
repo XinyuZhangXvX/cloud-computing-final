@@ -17,29 +17,27 @@
       <h3>All Categories</h3>
       <ul>
         <li v-for="item in category.subCateGroupList" :key="item.id">
-          <a href="##">
-            <!-- <img :src="item.bannerUrl" alt /> -->
+          <!-- <a href="##">
             <div class="name">{{item.name}}</div>
-          </a>
+          </a>  -->
+          <RouterLink class="link" :to="'/category/'+item.id+'/subcat/'+item.id" @click="hide(item)">{{item.name}}</RouterLink>
         </li>
       </ul>
     </div>
-    <div >
-      <MyPanel title="Results" subTitle="There are the results">
-        <ul class="goods-list">
-          <li class="item" v-for="item in goods" :key="item.id">
-            <router-link to="/">
-              <img :src="item.listPicUrl" />
-              <div class="title ellipsis-2">{{item.name}}</div>
-              <a style="float: right;">
-                <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
-                <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
-              </a>
-            </router-link>
-          </li>
-        </ul>
-      </MyPanel>
-    </div>
+    <MyPanel title="Results" subTitle="There are the results">
+      <ul class="goods-list">
+        <li class="item" v-for="item in goods" :key="item.id">
+          <router-link to="/">
+            <img :src="item.listPicUrl" />
+            <div class="title ellipsis-2">{{item.name}}</div>
+            <a style="float: right;">
+              <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
+              <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
+            </a>
+          </router-link>
+        </li>
+      </ul>
+    </MyPanel>
   </div>
 </template>
 
@@ -49,7 +47,7 @@ import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import { getBanner } from "@/api";
+import { getCate } from "@/api";
 import {topCategory} from '@/utils/constants'
 export default {
   data(){
@@ -83,24 +81,12 @@ export default {
       }
   },
   setup(props) {
-    // 轮播图
-    const banner = ref([]);
-    // getBanner()
-    //   .then(res => {
-    //     if (res.msg == "操作成功") {
-    //       banner.value = res.result;
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
     // 获取仓库对象
     const store = useStore();
     // 获取路由导航对象
     const route = useRoute();
     // 查找跟路由中 id 相等的分类
-    console.log(topCategory)
+    // console.log(topCategory)
     const category = computed(() => {
       let cate = {};
       const item = topCategory.find(item => {
@@ -110,7 +96,26 @@ export default {
       return cate;
     });
     console.log(category.value);
-    return { banner, category };
+    console.log(category.value.id);
+
+    const goods = ref([]);
+    const getCateList = async (id) => {
+      try {
+        const res = await getCate(id);
+        console.log(res);
+        // if(status == 200)
+        goods.value=res;
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCateList(category.value.id);
+    console.log('goods is')
+    console.log(goods)
+    // const goods = defaultRecommend;
+
+    return { goods, category };
   }
 };
 </script>
@@ -148,6 +153,39 @@ export default {
             color: @xtxColor;
           }
         }
+      }
+    }
+  }
+}
+.goods-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  .item {
+    // display: list-item;
+    // float:left; 
+    // display: block;
+    // white-space: nowrap;
+    width: 265px;
+    height: 365px;
+    background-color: #f5f5f5;
+    img {
+      width: 265px;
+      height: 265px;
+    }
+    // .hoverShadow();
+    .title {
+      font-size: 17px;
+      text-align: center;
+      padding: 15px 25px;
+    }
+    .price {
+      text-align: center;
+      font-size: 15px;
+      color: @priceColor;
+      del {
+        color: #666;
       }
     }
   }

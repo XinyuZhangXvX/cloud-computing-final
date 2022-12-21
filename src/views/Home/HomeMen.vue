@@ -25,7 +25,7 @@
 import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { ref } from "vue";
-import { getHot } from "@/api";
+import { getCate } from "@/api";
 import { defaultRecommend } from '@/utils/constants';
 export default {
   data(){
@@ -59,21 +59,21 @@ export default {
       }
   },
   setup(props) {
-    // const goods = ref([]);
-    // const getHotList = async () => {
-    //   try {
-    //     const res = await getHot();
-    //     console.log(res);
-    //     if (res.msg == "操作成功") {
-    //         goods.value=res.result.slice(0,4);
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // getHotList();
+    const goods = ref([]);
+    const getHotList = async () => {
+      try {
+        const res = await getCate(2);
+        console.log(res);
+        // if(status == 200)
+        goods.value=res.slice(0,8);
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getHotList();
+    console.log(goods)
     
-    const goods = defaultRecommend;
     return { goods };
   }
 };

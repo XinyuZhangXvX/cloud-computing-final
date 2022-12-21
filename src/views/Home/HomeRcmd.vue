@@ -59,7 +59,6 @@
 import { ref } from "vue";
 import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
-import { getNew } from "@/api";
 import { defaultRecommend } from '@/utils/constants';
 export default {
   data(){
@@ -104,7 +103,7 @@ export default {
     for (let i = 0; i < goods.length; i++) {
       likemap.set(goods[i].id, goods[i].isLiked);
     }
-    console.log(this)
+    // console.log(this)
     // setMap(this.map, likemap)
     // const getNewList = async () => {
     //   try {
