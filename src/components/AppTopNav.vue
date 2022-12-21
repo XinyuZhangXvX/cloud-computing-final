@@ -7,8 +7,7 @@
             <a href="javascript:;">Hi</a>
           </li>
           <li>
-            <a href="javascript:;">Logout</a>
-            <!-- <RouterLink class="link" :to="'/signin'">Logout</RouterLink> -->
+            <RouterLink class="link" :to="'/'" @click.prevent="logout">Logout</RouterLink>
           </li>
         </template>
         <li v-else>
@@ -38,9 +37,12 @@
 <script>
 import { useStore } from "vuex";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
+
 export default {
   setup(props) {
     const store = useStore();
+    const router = useRouter();
     // console.log(store.state);
     // let userinfo = computed(() => {
     //   return {
@@ -52,8 +54,18 @@ export default {
       return store.getters.isAuthenticated;
     });
 
-    return { isAuthenticated };
+    async function logout() {
+      store.dispatch("logout");
+
+      router.push({
+        name: "SignIn",
+        params: { message: "You have logged out" },
+      });
+    }
+
+    return { logout, isAuthenticated };
   }
+
 };
 </script>
 
