@@ -129,6 +129,7 @@ export default {
 
 <style lang="less" scoped>
 .home-new {
+  clear:left;
   .goods-list {
     
     display: flex;

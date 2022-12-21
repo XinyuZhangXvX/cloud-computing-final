@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <!-- 联系我们 -->
-    <div class="contact">
+    <!-- <div class="contact">
       <div class="container w">
         <dl>
           <dt>Customer Service</dt>
@@ -28,24 +28,10 @@
           <dd class="hotline">400-0000-000 <small>Monday to Sunday 8:00-18:00</small></dd>
         </dl>
       </div>
-    </div>
+    </div> -->
     <!-- 其它 -->
     <div class="extra">
       <div class="container w">
-        <div class="slogan">
-          <a href="javascript:;">
-            <i class="iconfont icon-footer01"></i>
-            <span>O.O</span>
-          </a>
-          <a href="javascript:;">
-            <i class="iconfont icon-footer02"></i>
-            <span>X.X</span>
-          </a>
-          <a href="javascript:;">
-            <i class="iconfont icon-footer03"></i>
-            <span>Q.Q</span>
-          </a>
-        </div>
         <!-- 版权信息 -->
         <div class="copyright">
           <p>

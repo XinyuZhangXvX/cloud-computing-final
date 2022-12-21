@@ -138,6 +138,7 @@ export default {
 
 <style lang="less" scoped>
 .category {
+  clear:left;
   padding: 15px 40px;
   .breadcrumb {
     padding: 20px 0;
