@@ -1,17 +1,19 @@
-<template>
+<template>base-card
   <div class="app-top-nav">
     <div class="w">
       <ul>
-        <template v-if="userinfo.token">
+        <template v-if="isAuthenticated">
           <li>
-            <a href="javascript:;">Hi {{userinfo.username}}</a>
+            <a href="javascript:;">Hi</a>
           </li>
           <li>
             <a href="javascript:;">Logout</a>
+            <!-- <RouterLink class="link" :to="'/signin'">Logout</RouterLink> -->
           </li>
         </template>
         <li v-else>
-          <a href="javascript:;">Login</a>
+          <!-- <a href="javascript:;">Login</a> -->
+          <RouterLink class="link" :to="'/signin'">Login</RouterLink>
         </li>
         <li>
           <a href="javascript:;">My Favorite</a>
@@ -40,15 +42,17 @@ export default {
   setup(props) {
     const store = useStore();
     // console.log(store.state);
-    let userinfo = computed(() => {
-      // return store.state.user.userinfo;
-      return {
-        token: 111,
-        username: "abc"
-      }
+    // let userinfo = computed(() => {
+    //   return {
+    //     // token: 111,
+    //     // username: "abc"
+    //   }
+    // });
+    const isAuthenticated = computed(function() {
+      return store.getters.isAuthenticated;
     });
 
-    return { userinfo };
+    return { isAuthenticated };
   }
 };
 </script>

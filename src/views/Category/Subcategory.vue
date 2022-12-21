@@ -53,6 +53,7 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { getBanner } from "@/api";
+import {topCategory} from '@/utils/constants'
 export default {
   data(){
     return{
@@ -104,7 +105,7 @@ export default {
     // 查找跟路由中 id 相等的分类
     const category = computed(() => {
       let cate = {};
-      const item = store.state.category.cateList.find(item => {
+      const item = topCategory.find(item => {
         return item.id == route.params.id;
       });
       if (item) cate = item;
@@ -116,7 +117,7 @@ export default {
     const subcategory = computed(() => {
       let cate = {};
       let subcat = {};
-      const item = store.state.category.cateList.find(item => {
+      const item = topCategory.find(item => {
         return item.id == route.params.id;
       });
       if (item) {

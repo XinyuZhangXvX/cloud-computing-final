@@ -32,6 +32,7 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { getBanner } from "@/api";
+import {topCategory} from '@/utils/constants'
 export default {
   setup(props) {
     // 轮播图
@@ -51,9 +52,10 @@ export default {
     // 获取路由导航对象
     const route = useRoute();
     // 查找跟路由中 id 相等的分类
+    console.log(topCategory)
     const category = computed(() => {
       let cate = {};
-      const item = store.state.category.cateList.find(item => {
+      const item = topCategory.find(item => {
         return item.id == route.params.id;
       });
       if (item) cate = item;

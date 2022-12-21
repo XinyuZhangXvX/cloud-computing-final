@@ -5,6 +5,21 @@ import {
 import Layout from '@/views/Layout.vue'
 import Home  from '@/views/Home/Home.vue'
 
+// import SignUp from "@/views/auth/SignUp";
+// import SignIn from "@/views/auth/SignIn";
+// import ForgotPassword from "@/views/auth/ForgotPassword";
+// import Confirm from "@/views/auth/Confirm";
+// import NotFound from "@/views/NotFound";
+// import Settings from "@/views/auth/Settings";
+// import store from "../store/index.js";
+
+// const Login = () => import('@/views/Login.vue')
+const Category = () => import('@/views/Category/Category.vue')
+const Subcategory = () => import('@/views/Category/Subcategory.vue')
+const Search = () => import('@/views/Search.vue')
+// const SignUp = () => import("@/views/auth/SignUp.vue")
+// const SignIn = () => import("@/components/auth/SignInForm.vue")
+
 import SignUp from "@/views/auth/SignUp";
 import SignIn from "@/views/auth/SignIn";
 import ForgotPassword from "@/views/auth/ForgotPassword";
@@ -17,22 +32,21 @@ import EditContact from "@/views/contacts/EditContact";
 import DeleteContact from "@/views/contacts/DeleteContact";
 import store from "../store/index.js";
 
-// const Login = () => import('@/views/Login.vue')
-const Category = () => import('@/views/Category/Category.vue')
-const Subcategory = () => import('@/views/Category/Subcategory.vue')
-const Search = () => import('@/views/Search.vue')
-
-
 const routes = [
+  
   {
+    
     path: '/',
     name: 'Layout',
     component: Layout,
     children:[
       {
         path:'/',
+        name:"Home",
         component:Home
       },
+      { path: "/signup", name: "SignUp", component: SignUp },
+      { path: "/signin", name: "SignIn", component: SignIn },
       {
         path:'/search/:keyword',
         component:Search
@@ -47,63 +61,58 @@ const routes = [
         children:[
         ]
       }
-    ]
-  },
-  { path: "/signup", name: "SignUp", component: SignUp },
-  { path: "/signin", name: "SignIn", component: SignIn },
-  {
-    path: "/forgotpassword",
-    name: "ForgotPassword",
-    component: ForgotPassword,
-  },
-  { path: "/confirm", name: "Confirm", component: Confirm },
-  {
-    path: "/settings",
-    name: "Settings",
-    component: Settings,
-    beforeEnter: isAuthenticated,
+    ],
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
-  {
-    path: "/contacts",
-    name: "Contacts",
-    component: Contacts,
-    beforeEnter: isAuthenticated,
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/delete-contact/:id",
-    name: "DeleteContact",
-    component: DeleteContact,
-    beforeEnter: isAuthenticated,
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/edit-contact/:id",
-    name: "EditContact",
-    component: EditContact,
-    beforeEnter: isAuthenticated,
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/add-contact",
-    name: "AddContact",
-    component: AddContact,
-    beforeEnter: isAuthenticated,
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  { path: "/:notFound(.*)", component: NotFound }
-]
+  // {
+  //   path: "/forgotpassword",
+  //   name: "ForgotPassword",
+  //   component: ForgotPassword,
+  // },
+  // { path: "/confirm", name: "Confirm", component: Confirm },
+  // {
+  //   path: "/settings",
+  //   name: "Settings",
+  //   component: Settings,
+  //   beforeEnter: isAuthenticated,
+  //   meta: {
+  //     requiresAuth: true,
+  //   },
+  // },
+  // {
+  //   path: "/entry",
+  //   name: "entry",
+  //   component: Layout,
+  //   beforeEnter: isAuthenticated,
+  //   children:[
+  //     {
+  //       path:'/entry/',
+  //       component:Home
+  //     },
+  //     {
+  //       path:'/entry/search/:keyword',
+  //       component:Search
+  //     },
+  //     {
+  //       path:'/entry/category/:id/subcat/:subid',
+  //       component:Subcategory
+  //     },
+  //     {
+  //       path:'/category/:id',
+  //       component:Category,
+  //       children:[
+  //       ]
+  //     }
+  //   ],
+  //   meta: {
+  //     requiresAuth: true,
+  //   },
+  // },
+
+  // { path: "/:notFound(.*)", component: NotFound },
+];
 
 const router = createRouter({
   // Hash模式

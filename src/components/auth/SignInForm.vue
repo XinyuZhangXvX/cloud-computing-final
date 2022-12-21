@@ -152,7 +152,7 @@ export default {
 
           // after logging in user is navigated to contacts list
           router.replace({
-            name: "Contacts",
+            name: "Home",
             params: { message: "You have successfully signed in" },
           });
         },
