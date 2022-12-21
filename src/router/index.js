@@ -13,6 +13,7 @@ import SignIn from "@/views/auth/SignIn";
 import Confirm from "@/views/auth/Confirm";
 import NotFound from "@/views/NotFound";
 import store from "../store/index.js";
+import ForgotPassword from "@/views/auth/ForgotPassword";
 
 const routes = [
   
@@ -30,6 +31,11 @@ const routes = [
       { path: "/signup", name: "SignUp", component: SignUp },
       { path: "/signin", name: "SignIn", component: SignIn },
       { path: "/confirm", name: "Confirm", component: Confirm },
+      {
+        path: "/forgotpassword",
+        name: "ForgotPassword",
+        component: ForgotPassword,
+      },
       {
         path:'/search/:keyword',
         component:Search
