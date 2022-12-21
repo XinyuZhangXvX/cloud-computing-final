@@ -1,4 +1,4 @@
-<template>base-card
+<template>
   <div class="app-top-nav">
     <div class="w">
       <ul>
