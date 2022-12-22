@@ -122,7 +122,9 @@ import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { patternSamples, textureSamples } from '@/utils/constants';
 import { defaultRecommend } from '@/utils/constants';
 import { postQuestionnaire } from "@/api";
-import { ref } from "vue";
+import { likeItem } from "@/api";
+import { useStore } from "vuex";
+import { ref, computed } from "vue";
 // import { getSearch } from "@/api";
 
 export default {
@@ -185,6 +187,7 @@ export default {
         // this.goods[e.id-1].isLiked = true
         console.log("like item")
         console.log(this)
+        likeItem(e.id, this.username);
     }else{
         // TODO -> send axios request to unlike a item
         e.isLiked = false
@@ -198,7 +201,11 @@ export default {
   setup(props) {
     const patterns = patternSamples;
     const textures = textureSamples;
-    return { patterns, textures };
+    const store = useStore();
+    const username = computed(function() {
+      return store.getters.email;
+    });
+    return { patterns, textures, username };
   }
 }
 </script>

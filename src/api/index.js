@@ -8,25 +8,26 @@ const baseApi = "https://dbgqcxez61.execute-api.us-east-1.amazonaws.com/ifashion
  // get category items
  export const getCate=(catId)=>{
     console.log(baseApi+ catId +'/0')
-    return req.get(baseApi+ catId +'/0');
+    return req.get("/foo/"+ catId +'/0');
  }
 
  // get subcategory items
  export const getSubCate=(catId, subCateId)=>{
     console.log(baseApi+ catId +'/' + subCateId)
-    return req.get(baseApi+ catId +'/' + subCateId);
+    return req.get("/foo/"+ catId +'/' + subCateId);
  }
 
 // search items
 export const getSearchResults=(keyword)=>{
    console.log(baseApi + 'search?q='+ keyword)
-   return req.get(baseApi  + 'search?q='+ keyword);
+   return req.get('/foo/search?q='+ keyword);
 }
 
 // get favorite
 export const getFavorite=(username)=>{
    console.log(baseApi+ 'myfavorite?username='+ username)
-   return req.get(baseApi + 'myfavorite?username='+ username);
+   // return req.get(baseApi + 'myfavorite?username='+ username);
+   return req.get('/foo/myfavorite?username='+ username);
 }
 
 // post method to like an item
@@ -37,7 +38,7 @@ export const likeItem=(id, username)=>{
    //    username: username
    // }
    console.log(baseApi + "like?id="+id + "&username="+username)
-   req.post(baseApi + "like?id="+id + "&username="+username);
+   req.post("/foo/like?id="+id + "&username="+username);
 }
 
 // post method to like an item

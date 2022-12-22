@@ -27,14 +27,12 @@
     <MyPanel title="Results" subTitle="There are the results">
       <ul class="goods-list">
         <li class="item" v-for="item in goods" :key="item.id">
-          <router-link to="/">
-            <img :src="item.listPicUrl" />
-            <div class="title ellipsis-2">{{item.name}}</div>
-            <a style="float: right;">
-              <i class="fa-solid fa-heart favorite-right" v-if="map.get(item.id)" @click="toggleLike(item)"></i>
-              <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
-            </a>
-          </router-link>
+          <img :src="item.listPicUrl" />
+          <div class="title ellipsis-2">{{item.name}}</div>
+          <a style="float: right;">
+            <i class="fa-solid fa-heart favorite-right" v-if="map.get(item.id)" @click="toggleLike(item)"></i>
+            <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
+          </a>
         </li>
       </ul>
     </MyPanel>
@@ -48,6 +46,7 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { getCate } from "@/api";
+import { likeItem } from "@/api";
 import {topCategory} from '@/utils/constants'
 export default {
   data(){
@@ -72,6 +71,7 @@ export default {
           // this.goods[e.id-1].isLiked = true
           console.log("like item")
           console.log(this)
+          likeItem(e.id, this.username);
       }else{
           // TODO -> send axios request to unlike a item
           e.isLiked = false
@@ -115,9 +115,12 @@ export default {
     getCateList(category.value.id);
     console.log('goods is')
     console.log(goods)
+    const username = computed(function() {
+      return store.getters.email;
+    });
     // const goods = defaultRecommend;
 
-    return { goods, category };
+    return { goods, category, username };
   }
 };
 </script>

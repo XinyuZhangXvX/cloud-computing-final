@@ -30,8 +30,10 @@ import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { defaultRecommend } from '@/utils/constants';
 import { useRoute } from "vue-router";
+import { useStore } from "vuex";
 import { getSearchResults } from "@/api";
-import { ref } from "vue";
+import { likeItem } from "@/api";
+import { ref, computed } from "vue";
 // import { getSearch } from "@/api";
 
 export default {
@@ -57,6 +59,7 @@ export default {
         // this.goods[e.id-1].isLiked = true
         console.log("like item")
         console.log(this)
+        likeItem(e.id, this.username);
     }else{
         // TODO -> send axios request to unlike a item
         e.isLiked = false
@@ -77,7 +80,7 @@ export default {
       item.open = false;
     };
     const route = useRoute();
-
+    const store = useStore();
     const goods = ref([]);
     const getResultList = async (keyword) => {
       try {
@@ -94,9 +97,11 @@ export default {
     // console.log(typeof(goods)) // object
     // if(goods.length > 8) goods = goods.slice(0,8)
     console.log(goods)
+    const username = computed(function() {
+      return store.getters.email;
+    });
     // const goods = defaultRecommend;
-    return { goods };
-    return { show, hide, goods };
+    return { show, hide, goods, username };
   }
 };
 </script>
