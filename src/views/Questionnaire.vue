@@ -156,27 +156,27 @@ export default {
         patterns: this.checkedPatterns,
         textures: this.checkedTextures
       }
-      // const getRcmdList = async (params) => {
-      //   try {
-      //     const res = await postQuestionnaire(params);
-      //     console.log(res);
-      //     // if(status == 200)
-      //     this.goods.value=res;
+      const getRcmdList = async (params) => {
+        try {
+          const res = await postQuestionnaire(params);
+          console.log(res);
+          // if(status == 200)
+          this.goods.value=res;
           
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // };
-      // getRcmdList(params);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getRcmdList(params);
       this.isSubmitted = true
-      
+      console.log(this.goods)
 
     },
-    setup(props) {
-        const patterns = patternSamples;
-        const textures = textureSamples;
-        return { patterns, textures };
-    }
+  },
+  setup(props) {
+    const patterns = patternSamples;
+    const textures = textureSamples;
+    return { patterns, textures };
   }
 }
 </script>
