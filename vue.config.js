@@ -26,14 +26,14 @@ module.exports = defineConfig({
       //     '^/api': ''
       //   }
       // },
-      // '/foo': {
-      //   target: 'https://dbgqcxez61.execute-api.us-east-1.amazonaws.com/ifashion-api', //本地接口
-      //   ws: true,
-      //   changeOrigin: true,
-      //   pathRewrite: { //重写路径
-      //     '^/foo': ''
-      //   }
-      // }
+      '/foo': {
+        target: 'https://dbgqcxez61.execute-api.us-east-1.amazonaws.com/ifashion-api', //本地接口
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: { //重写路径
+          '^/foo': ''
+        }
+      }
     },
   }
 })

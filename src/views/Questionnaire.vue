@@ -136,7 +136,7 @@ export default {
       checkedPatterns: [],
       checkedColors: [],
       isSubmitted: false,
-      goods: defaultRecommend
+      goods: []
     }
   },
   components: {
@@ -149,7 +149,7 @@ export default {
       console.log("Choose colors: " + this.checkedColors);
       console.log("Choose patterns: " + this.checkedPatterns);
       console.log("Choose textures: " + this.checkedTextures);
-      const goods = ref([]);
+      // const goods = ref([]);
       var params = {
         sex: this.sexChecked,
         colors: this.checkedColors,
@@ -158,17 +158,20 @@ export default {
       }
       const getRcmdList = async (params) => {
         try {
-          const res = await postQuestionnaire(params);
-          console.log(res);
+          var res = await postQuestionnaire(params);
+          console.log("Result is: "+res);
           // if(status == 200)
-          this.goods.value=res;
+          this.goods=res;
+          // this.goods.push(res)
+          return res;
           
         } catch (error) {
           console.log(error);
         }
       };
-      getRcmdList(params);
+      var res = getRcmdList(params);
       this.isSubmitted = true
+      console.log(res)
       console.log(this.goods)
 
     },

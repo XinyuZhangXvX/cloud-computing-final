@@ -7,14 +7,12 @@
       </template>
       <ul class="goods-list">
         <li class="item" v-for="item in goods" :key="item.id">
-          <router-link to="/">
-            <img :src="item.listPicUrl" />
-            <div class="title ellipsis-2">{{item.name}}</div>
-            <a style="float: right;">
-              <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
-              <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
-            </a>
-          </router-link>
+          <img :src="item.listPicUrl" />
+          <div class="title ellipsis-2">{{item.name}}</div>
+          <a style="float: right;">
+            <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
+            <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
+          </a>
         </li>
       </ul>
     </MyPanel>

@@ -2,6 +2,7 @@
  * 导出所有的接口请求函数
  */
 import req from './req'
+import axios from 'axios'
 
 const baseApi = "https://dbgqcxez61.execute-api.us-east-1.amazonaws.com/ifashion-api/"
  // get category items
@@ -40,8 +41,9 @@ export const likeItem=(id, username)=>{
 }
 
 // post method to like an item
-export const postQuestionnaire=(username, params)=>{
-   
-   console.log(baseApi + "questionnaire?id="+id + "&username="+username)
-   req.post(baseApi +"questionnaire", params);
+export const postQuestionnaire=(params)=>{
+   // console.log(baseApi + "questionnaire?id="+id + "&username="+username)
+   // req.post(baseApi +"questionnaire", params);
+   // axios.post(baseApi +"questionnaire", params);
+   axios.post("/foo/questionnaire", params);
 }

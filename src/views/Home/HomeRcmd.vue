@@ -10,22 +10,16 @@
       <!-- 使用默认插槽 -->
       <ul v-if="goods.length" class="goods-list">
         <li class="item" v-for="item in goods" :key="item.id">
-          <router-link to="/">
-            <img :src="item.listPicUrl" />
-            <div class="title ellipsis">{{item.name}}</div>
-            
-            <a style="float: right;">
-              <!-- <i class="fa-regular fa-heart favorite-right" v-if="!isLiked"></i> -->
-              <!-- <i class="fa-solid fa-heart favorite-right" v-if="isLiked"></i> -->
-              <!-- <i :class="item.isLiked===true? 'fa-solid fa-heart favorite-right': 'fa-regular fa-heart favorite-right'" @click="toggleLike(item)"></i> -->
-              <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
-              <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
-            </a>
-            <!-- <div class="price">
-              ￥{{item.retailPrice}}
-              <del>￥{{item.counterPrice}}</del>
-            </div> -->
-          </router-link>
+          <img :src="item.listPicUrl" />
+          <div class="title ellipsis">{{item.name}}</div>
+          
+          <a style="float: right;">
+            <!-- <i class="fa-regular fa-heart favorite-right" v-if="!isLiked"></i> -->
+            <!-- <i class="fa-solid fa-heart favorite-right" v-if="isLiked"></i> -->
+            <!-- <i :class="item.isLiked===true? 'fa-solid fa-heart favorite-right': 'fa-regular fa-heart favorite-right'" @click="toggleLike(item)"></i> -->
+            <i class="fa-solid fa-heart favorite-right" v-if="map.get(item.id)" @click="toggleLike(item)"></i>
+            <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
+          </a>
         </li>
       </ul>
       <!-- 骨架屏 -->
@@ -66,14 +60,9 @@ import { likeItem } from "@/api";
 export default {
   data(){
     return{
-      map: [false, false, false, false,false, false, false, false,]
+      map: new Map()
     }
   },
-  // state: () => {
-    // return {
-    //   map:[false, false, false, false,false, false, false, false],
-    // }
-  // },
   components: {
     MyPanel,
     HomeVueSkeleton
@@ -86,7 +75,8 @@ export default {
         console.log(e)
 
         e.isLiked = true
-        this.map[e.id] = true
+        // this.map[e.id] = true
+        this.map.set(e.id, true)
         // this.goods[e.id-1].isLiked = true
         console.log("like item")
         console.log(e.id)
@@ -94,7 +84,8 @@ export default {
       }else{
         // TODO -> send axios request to unlike a item
         e.isLiked = false
-        this.map[e.id] = false
+        // this.map[e.id] = false
+        this.map.set(e.id, false)
         // this.goods[e.id-1].isLiked = false
         console.log("unlike item")
       }
