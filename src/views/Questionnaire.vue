@@ -171,13 +171,14 @@ export default {
       this.isSubmitted = true
       
 
-  },
-  setup(props) {
-    const patterns = patternSamples;
-    const textures = textureSamples;
-    return { patterns, textures };
+    },
+    setup(props) {
+        const patterns = patternSamples;
+        const textures = textureSamples;
+        return { patterns, textures };
+    }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
