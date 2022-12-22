@@ -46,7 +46,7 @@ export const postQuestionnaire=(params)=>{
    // console.log(baseApi + "questionnaire?id="+id + "&username="+username)
    // req.post(baseApi +"questionnaire", params);
    // axios.post(baseApi +"questionnaire", params);
-   return axios.post("/foo/questionnaire", params);
+   return req.post("/foo/questionnaire", params);
 }
 
 export const getRecommend=(username)=>{
@@ -57,5 +57,5 @@ export const getRecommend=(username)=>{
    //       'Access-Control-Allow-Headers':'*',
    //    }
    // };
-   return axios.get('/foo/recommendation?username='+ username);
+   return req.get('/foo/recommendation?username='+ username);
 }

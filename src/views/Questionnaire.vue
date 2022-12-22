@@ -161,7 +161,7 @@ export default {
           var res = await postQuestionnaire(params);
           console.log(res);
           // if(status == 200)
-          this.goods=res.data;
+          this.goods=res;
           // this.goods.push(res)
           return res;
           

@@ -111,7 +111,7 @@ export default {
         const res = await getRecommend(username);
         console.log(res);
         if ((res.code = "200")) {
-          goods.value = res.data;
+          goods.value = res;
         }
       } catch (error) {
         console.log(error);
