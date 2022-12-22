@@ -56,11 +56,12 @@ import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { defaultRecommend } from '@/utils/constants';
 import { useStore } from "vuex";
 import { computed } from "vue";
-import { likeItem } from "@/api";
+import { likeItem, getRecommend } from "@/api";
 export default {
   data(){
     return{
-      map: new Map()
+      map: new Map(),
+      goods: []
     }
   },
   components: {
@@ -92,36 +93,36 @@ export default {
     }
   },
   setup(props) {
-    // const goods = ref([]);
-    const goods = defaultRecommend;
+    const goods = ref([]);
+    // const goods = defaultRecommend;
     const store = useStore();
-    const likemap = new Map();
-    for (let i = 0; i < goods.length; i++) {
-      likemap.set(goods[i].id, goods[i].isLiked);
-    }
+    // const likemap = new Map();
+    // for (let i = 0; i < goods.length; i++) {
+    //   likemap.set(goods[i].id, goods[i].isLiked);
+    // }
     const username = computed(function() {
       return store.getters.email;
     });
-    // console.log(this)
+
+    console.log(this)
     // setMap(this.map, likemap)
-    // const getNewList = async () => {
-    //   try {
-    //     const res = await getNew();
-    //     console.log(res);
-    //     if ((res.code = "200")) {
-    //       goods.value = res.data.result.slice(0, 8);
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // getNewList();
-    return { goods, likemap, username};
+    const getRcmdList = async (username) => {
+      try {
+        const res = await getRecommend(username);
+        console.log(res);
+        if ((res.code = "200")) {
+          goods.value = res.data;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    console.log(username)
+    console.log(username.value)
+    getRcmdList(username.value);
+    return { goods, username};
   }
 };
-// function toggleFunction(x){
-//   x.classList.toggle("fa-solid");
-// }
 
 </script>
 

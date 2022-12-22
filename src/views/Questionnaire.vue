@@ -101,14 +101,12 @@
       <MyPanel title="Recommendations" subTitle="These items you might like">
         <ul class="goods-list">
           <li class="item" v-for="item in goods" :key="item.id">
-            <router-link to="/">
-              <img :src="item.listPicUrl" />
-              <div class="title ellipsis-2">{{item.name}}</div>
-              <a style="float: right;">
-                <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
-                <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
-              </a>
-            </router-link>
+            <img :src="item.listPicUrl" />
+            <div class="title ellipsis-2">{{item.name}}</div>
+            <a style="float: right;">
+              <i class="fa-solid fa-heart favorite-right" v-if="map.get(item.id)" @click="toggleLike(item)"></i>
+              <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
+            </a>
           </li>
         </ul>
       </MyPanel>
@@ -130,13 +128,13 @@ import { ref } from "vue";
 export default {
   data(){
     return{
-      map: [false, false, false, false,false, false, false, false,],
+      map: new Map(),
       sexChecked: "female",
       checkedTextures: [],
       checkedPatterns: [],
       checkedColors: [],
       isSubmitted: false,
-      goods: []
+      goods: defaultRecommend
     }
   },
   components: {
@@ -159,9 +157,9 @@ export default {
       const getRcmdList = async (params) => {
         try {
           var res = await postQuestionnaire(params);
-          console.log("Result is: "+res);
+          console.log(res);
           // if(status == 200)
-          this.goods=res;
+          this.goods=res.data;
           // this.goods.push(res)
           return res;
           
@@ -171,10 +169,31 @@ export default {
       };
       var res = getRcmdList(params);
       this.isSubmitted = true
-      console.log(res)
+      // console.log(res)
       console.log(this.goods)
 
     },
+    toggleLike(e){
+    // const cur = this
+    if(e.isLiked === false){
+        // TODO -> send axios request to like a item
+        console.log(this)
+
+        e.isLiked = true
+        // this.map[e.id] = true
+        this.map.set(e.id, true)
+        // this.goods[e.id-1].isLiked = true
+        console.log("like item")
+        console.log(this)
+    }else{
+        // TODO -> send axios request to unlike a item
+        e.isLiked = false
+        // this.map[e.id] = false
+        this.map.set(e.id, false)
+        // this.goods[e.id-1].isLiked = false
+        console.log("unlike item")
+      }
+    }
   },
   setup(props) {
     const patterns = patternSamples;

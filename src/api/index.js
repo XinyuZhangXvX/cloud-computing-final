@@ -45,5 +45,16 @@ export const postQuestionnaire=(params)=>{
    // console.log(baseApi + "questionnaire?id="+id + "&username="+username)
    // req.post(baseApi +"questionnaire", params);
    // axios.post(baseApi +"questionnaire", params);
-   axios.post("/foo/questionnaire", params);
+   return axios.post("/foo/questionnaire", params);
+}
+
+export const getRecommend=(username)=>{
+   // var additionalParams = {
+   //    headers: {
+   //       'Access-Control-Allow-Origin': '*',
+   //       'Access-Control-Allow-Methods': '*',
+   //       'Access-Control-Allow-Headers':'*',
+   //    }
+   // };
+   return axios.get('/foo/recommendation?username='+ username);
 }
