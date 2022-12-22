@@ -29,7 +29,6 @@ export const getFavorite=(username)=>{
 
 // post method to like an item
 export const likeItem=(id, username)=>{
-   
    // return req.post('/foo/like');
    // var params = {
    //    id: id.toString(),
@@ -37,4 +36,12 @@ export const likeItem=(id, username)=>{
    // }
    console.log("/foo/like?id="+id + "&username="+username)
    req.post("/foo/like?id="+id + "&username="+username);
+}
+
+// post method to like an item
+export const postQuestionnaire=(username, params)=>{
+   
+ 
+   console.log("/foo/questionnaire?id="+id + "&username="+username)
+   req.post("/foo/questionnaire", params);
 }
