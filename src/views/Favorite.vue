@@ -14,10 +14,7 @@
             <router-link to="/">
               <img :src="item.listPicUrl" />
               <div class="title ellipsis-2">{{item.name}}</div>
-              <a style="float: right;">
-                <i class="fa-solid fa-heart favorite-right" v-if="map[item.id-1]" @click="toggleLike(item)"></i>
-                <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
-              </a>
+              
             </router-link>
           </li>
         </ul>
@@ -31,42 +28,29 @@
 import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { defaultRecommend } from '@/utils/constants';
+import { useStore } from "vuex";
+import { computed } from "vue";
 import { ref } from "vue";
+import { getFavorite } from "@/api";
 // import { getSearch } from "@/api";
 
 export default {
   data(){
     return{
-      map: [true, true, true, true,true, true, true, true]
-      }
+      map: [true, true, true, true,true, true, true, true],
+      username: null  
+    }
   },
   components: {
     MyPanel,
     HomeVueSkeleton
   },
   methods:{
-      toggleLike(e){
-      // const cur = this
-      if(e.isLiked === false){
-          // TODO -> send axios request to like a item
-          console.log(this)
-
-          e.isLiked = true
-          this.map[e.id] = true
-          // this.goods[e.id-1].isLiked = true
-          console.log("like item")
-          console.log(this)
-      }else{
-          // TODO -> send axios request to unlike a item
-          e.isLiked = false
-          this.map[e.id] = false
-          // this.goods[e.id-1].isLiked = false
-          console.log("unlike item")
-      }
-      }
   },
   setup(props) {
     // 鼠标进入显示
+    const store = useStore();
+    const goods = ref([]);
     const show = item => {
       item.open = true;
     };
@@ -74,7 +58,23 @@ export default {
     const hide = item => {
       item.open = false;
     };
-    const goods = defaultRecommend;
+    const username = computed(function() {
+      return store.getters.email;
+    });
+    console.log("Username is: "+username.value)
+    const getFavoriteList = async (name) => {
+      try {
+        const res = await getFavorite(name);
+        console.log(res);
+        // if(status == 200)
+        goods.value=res;
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getFavoriteList(username.value);
+    
     return { show, hide, goods };
   }
 };

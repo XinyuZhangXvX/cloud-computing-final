@@ -60,6 +60,9 @@ import { ref } from "vue";
 import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { defaultRecommend } from '@/utils/constants';
+import { useStore } from "vuex";
+import { computed } from "vue";
+import { likeItem } from "@/api";
 export default {
   data(){
     return{
@@ -80,13 +83,14 @@ export default {
       // const cur = this
       if(e.isLiked === false){
         // TODO -> send axios request to like a item
-        console.log(this)
+        console.log(e)
 
         e.isLiked = true
         this.map[e.id] = true
         // this.goods[e.id-1].isLiked = true
         console.log("like item")
-        console.log(this)
+        console.log(e.id)
+        likeItem(e.id, this.username);
       }else{
         // TODO -> send axios request to unlike a item
         e.isLiked = false
@@ -99,10 +103,14 @@ export default {
   setup(props) {
     // const goods = ref([]);
     const goods = defaultRecommend;
+    const store = useStore();
     const likemap = new Map();
     for (let i = 0; i < goods.length; i++) {
       likemap.set(goods[i].id, goods[i].isLiked);
     }
+    const username = computed(function() {
+      return store.getters.email;
+    });
     // console.log(this)
     // setMap(this.map, likemap)
     // const getNewList = async () => {
@@ -117,7 +125,7 @@ export default {
     //   }
     // };
     // getNewList();
-    return { goods, likemap};
+    return { goods, likemap, username};
   }
 };
 // function toggleFunction(x){

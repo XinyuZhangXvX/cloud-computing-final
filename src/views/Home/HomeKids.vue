@@ -26,6 +26,9 @@ import MyPanel from "@/components/MyPanel.vue";
 import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { ref } from "vue";
 import { getCate } from "@/api";
+import { useStore } from "vuex";
+import { computed } from "vue";
+import { likeItem } from "@/api";
 import { defaultRecommend } from '@/utils/constants';
 export default {
   data(){
@@ -48,7 +51,8 @@ export default {
           this.map[e.id] = true
           // this.goods[e.id-1].isLiked = true
           console.log("like item")
-          console.log(this)
+          console.log(e.id)
+          likeItem(e.id, this.username);
       }else{
           // TODO -> send axios request to unlike a item
           e.isLiked = false
@@ -60,6 +64,7 @@ export default {
   },
   setup(props) {
     const goods = ref([]);
+    const store = useStore();
     const getHotList = async () => {
       try {
         const res = await getCate(3);
@@ -73,8 +78,10 @@ export default {
     };
     getHotList();
     console.log(goods)
-    
-    return { goods };
+    const username = computed(function() {
+      return store.getters.email;
+    });
+    return { goods, username};
   }
 };
 </script>

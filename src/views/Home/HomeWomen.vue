@@ -27,6 +27,9 @@ import HomeVueSkeleton from '@/components/Skeleton/HomeVueSkeleton.vue'
 import { ref } from "vue";
 import { getCate } from "@/api";
 import { defaultWomen } from '@/utils/constants';
+import { useStore } from "vuex";
+import { computed } from "vue";
+import { likeItem } from "@/api";
 export default {
   data(){
     return{
@@ -49,7 +52,8 @@ export default {
           this.map[e.id] = true
           // this.goods[e.id-1].isLiked = true
           console.log("like item")
-          console.log(this)
+          console.log(e.id)
+          likeItem(e.id, this.username);
       }else{
           // TODO -> send axios request to unlike a item
           e.isLiked = false
@@ -61,6 +65,7 @@ export default {
   },
   setup(props) {
     const goods = ref([]);
+    const store = useStore();
     const getHotList = async () => {
       try {
         const res = await getCate(1);
@@ -77,7 +82,10 @@ export default {
     // if(goods.length > 8) goods = goods.slice(0,8)
     console.log(goods)
     // const goods = defaultRecommend;
-    return { goods };
+    const username = computed(function() {
+      return store.getters.email;
+    });
+    return { goods, username};
   }
 };
 </script>
