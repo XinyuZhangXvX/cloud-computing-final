@@ -34,7 +34,7 @@
               <img :src="item.listPicUrl" />
               <div class="title ellipsis-2">{{item.name}}</div>
               <a style="float: right;">
-                <i class="fa-solid fa-heart favorite-right" v-if="map[item.id]" @click="toggleLike(item)"></i>
+                <i class="fa-solid fa-heart favorite-right" v-if="map.get(item.id)" @click="toggleLike(item)"></i>
                 <i class="fa-regular fa-heart favorite-right" v-else @click="toggleLike(item)"></i>
               </a>
             </router-link>
@@ -56,7 +56,7 @@ import {topCategory} from '@/utils/constants'
 export default {
   data(){
     return{
-      map: [false, false, false, false,false, false, false, false],
+      map: new Map()
     }
   },
   components: {
@@ -71,14 +71,16 @@ export default {
           console.log(this)
 
           e.isLiked = true
-          this.map[e.id] = true
+          // this.map[e.id] = true
+          this.map.set(e.id, true)
           // this.goods[e.id-1].isLiked = true
           console.log("like item")
           console.log(this)
       }else{
           // TODO -> send axios request to unlike a item
           e.isLiked = false
-          this.map[e.id] = false
+          // this.map[e.id] = false
+          this.map.set(e.id, false)
           // this.goods[e.id-1].isLiked = false
           console.log("unlike item")
       }
